@@ -109,13 +109,24 @@
             <label for="apellido1" class="col-sm-3 col-form-label">Apellido 1</label>
             <div class="col-sm-9">
               <input type="text" formControlName="apellido1" class="form-control" id="apellido1" placeholder="Apellido 1">
+              <div class="alert alert-danger" *ngIf="E['apellido1'].invalid && E['apellido1'].touched">
+                <div *ngIf="E['apellido1'].errors!['required']">El campo es obligatorio</div>
+                <div *ngIf="E['apellido1'].errors!['maxlength']">El tamaño máximo es de 15</div>
+                <div *ngIf="E['apellido1'].errors!['minlength']">Este campo debe tener almenos 2 caracteres</div>
+                <div *ngIf="E['apellido1'].errors!['pattern']">Nombre no válido</div>
+              </div>
             </div>
           </div>
           <div class="row mb-1">
             <label for="apellido2" class="col-sm-3 col-form-label">Apellido 2</label>
             <div class="col-sm-9">
               <input type="text" formControlName="apellido2" class="form-control" id="apellido2" placeholder="Apellido 2">
-            </div>
+              <div class="alert alert-danger" *ngIf="E['apellido2'].invalid && E['apellido2'].touched">
+                <div *ngIf="E['apellido2'].errors!['required']">El campo es obligatorio</div>
+                <div *ngIf="E['apellido2'].errors!['maxlength']">El tamaño máximo es de 15</div>
+                <div *ngIf="E['apellido2'].errors!['minlength']">Este campo debe tener almenos 2 caracteres</div>
+                <div *ngIf="E['apellido2'].errors!['pattern']">Nombre no válido</div>
+              </div></div>
           </div>
           <div class="row mb-1">
             <label for="telefono" class="col-sm-3 col-form-label">Telefono</label>
@@ -128,18 +139,33 @@
                   <input type="tel" formControlName="celular" class="form-control" id="celular" placeholder="Celular">
                 </div>
               </div>
+              <div class="alert alert-danger" *ngIf="E['telefono'].invalid && E['telefono'].touched">
+                <div *ngIf="E['telefono'].errors!['pattern']">Teléfono no valido (####-####)</div>
+              </div>
+              <div class="alert alert-danger" *ngIf="E['celular'].invalid && E['celular'].touched">
+                <div *ngIf="E['celular'].errors!['required']">El campo es obligatorio</div>
+                <div *ngIf="E['celular'].errors!['pattern']">Teléfono no válido (####-####)</div>
+              </div>
             </div>
           </div>
           <div class="row mb-1">
             <label for="correo" class="col-sm-3 col-form-label">Correo</label>
             <div class="col-sm-9">
               <input type="email" formControlName="correo" class="form-control" id="correo" placeholder="Correo">
+              <div class="alert alert-danger" *ngIf="E['correo'].invalid && E['correo'].touched">
+                <div *ngIf="E['correo'].errors!['required']">El campo es obligatorio</div>
+                <div *ngIf="E['correo'].errors!['pattern']">Correo no válido</div>
+              </div>              
             </div>
           </div>
           <div class="row">
             <label for="direccion" class="col-sm-3 col-form-label">Dirección</label>
             <div class="col-sm-9">
                 <textarea id="direccion" formControlName="direccion" class="form-control" placeholder="Dirección"></textarea>
+                <div class="alert alert-danger" *ngIf="E['direccion'].invalid && E['direccion'].touched">
+                  <div *ngIf="E['direccion'].errors!['required']">El campo es obligatorio</div>
+                  <div *ngIf="E['direccion'].errors!['minlength']">Este campo debe tener almenos 5 caracteres</div>
+                </div>                
             </div>
           </div>
         </form>
